@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+  background-image: url("./background.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+header {
+  display: flex;
+  background-color: indigo;
+  opacity: 90%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 48px;
+  color: white;
+}
+
+span {
+  color: fuchsia;
+}
+
+.search_song {
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: midnightblue;
+  color: white;
+  border: 0px;
+}
+
+.search_song:hover {
+  cursor: pointer;
+}
