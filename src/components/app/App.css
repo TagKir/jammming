@@ -23,27 +23,3 @@ h1 {
 span {
   color: fuchsia;
 }
-
-.search_song {
-  margin-top: 20px;
-  width: 200px;
-  height: 60px;
-  border-radius: 20px;
-  background-color: midnightblue;
-  color: white;
-  border: 0px;
-  font-size: 20px;
-}
-
-.search_song:hover {
-  cursor: pointer;
-  opacity: 0.85;
-}
-
-.search_song:active {
-  opacity: 1;
-  transition: margin 50ms, height 50ms, background-color 50ms;
-  background-color: rebeccapurple;
-  margin-top: 25px;
-  height: 50px;
-}
