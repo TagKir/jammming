@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import SearchBar from "../search_bar/SearchBar.js";
 import SearchResults from "../search_results/SearchResults.js";
+import Tracklist from "../tracklist/Tracklist.js";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
       <SearchBar />
       <SearchResults />
 
-      <div className="all"></div>
+      <div className="all">
+        <Tracklist />
+      </div>
     </div>
   );
 }
