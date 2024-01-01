@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../search_bar/SearchBar.js";
 import SearchResults from "../search_results/SearchResults.js";
 import Tracklist from "../tracklist/Tracklist.js";
@@ -16,9 +16,7 @@ function App() {
       <SearchBar />
       <SearchResults />
 
-      <div className="all">
-        <Tracklist />
-      </div>
+      <Tracklist />
     </div>
   );
 }
