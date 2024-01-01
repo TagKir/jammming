@@ -3,6 +3,11 @@
   background-image: url("./background.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+input {
+  outline: none;
 }
 
 header {
@@ -22,4 +27,29 @@ h1 {
 
 span {
   color: fuchsia;
+}
+
+button {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  width: 200px;
+  height: 60px;
+  border-radius: 20px;
+  background-color: midnightblue;
+  color: white;
+  border: 0px;
+  font-size: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+button:active {
+  opacity: 1;
+  transition: margin 25ms, height 25ms, background-color 25ms;
+  background-color: navy;
+  margin-top: 25px;
+  height: 55px;
 }
