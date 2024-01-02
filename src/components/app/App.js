@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import Tracklist from "../tracklist/Tracklist.js";
 
 function App() {
-  const client_id = "42774e0a12cd44d189d0dcbc18318dc2"; // Замените на ваш Client ID
-  const client_secret = "c5247a3ecd044f8dbd75fb84bb261b3f"; // Замените на ваш Client Secret
-
   return (
     <div className="App">
       <header>
