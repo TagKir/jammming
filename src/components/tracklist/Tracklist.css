@@ -32,35 +32,35 @@ h2 {
 
 .tracks ul,
 .chosen ul {
-  color: white;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+  background-color: indigo;
+  text-align: start;
+  padding-left: 0;
+  margin: 15px 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  justify-content: start;
 }
 
-.tracks ul li,
-.chosen ul li {
-  display: flex;
-  margin: 6px 0;
-  font-size: 18px;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  border-radius: 5px;
-  height: 50px;
-  background-color: indigo;
+.name {
+  font-size: 22px;
+  color: white;
+}
+
+.artist_album {
+  color: slategray;
 }
 
 .playlist_name_input {
   background-color: darkorchid;
   color: white;
-  font-size: 24px;
+  font-size: 26px;
   width: 70%;
   height: 30px;
   margin-top: 50px;
   border: 0px;
   border-bottom: 1px solid black;
   border-radius: 0;
+  padding-right: 20px;
 }
 
 .save {
