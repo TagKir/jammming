@@ -30,8 +30,8 @@ h2 {
   display: inline-block;
 }
 
-.tracks ul,
-.chosen ul {
+.tracks li,
+.chosen li {
   background-color: indigo;
   text-align: start;
   padding-left: 0;
@@ -39,6 +39,7 @@ h2 {
   border-radius: 10px;
   padding: 5px 10px;
   justify-content: start;
+  list-style: none;
 }
 
 .name {
@@ -48,6 +49,10 @@ h2 {
 
 .artist_album {
   color: slategray;
+}
+
+.plus_button {
+  font-size: 32px;
 }
 
 .playlist_name_input {
@@ -61,13 +66,4 @@ h2 {
   border-bottom: 1px solid black;
   border-radius: 0;
   padding-right: 20px;
-}
-
-.save {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-.save:active {
-  transition: background-color 25ms;
-  background-color: navy;
 }

@@ -1,7 +1,30 @@
 import "./Tracklist.css";
 import React, { useState } from "react";
+import SendButton from "../send/SendButton.js";
 
-export default function Tracklist() {
+export default function Tracklist(props) {
+  const [input, setInput] = useState("Default");
+  const [chose, setChose] = useState([]);
+
+  function inputHandler(e) {
+    setInput(e.target.value);
+  }
+
+  function addCardToChosen(card) {
+    setChose((prev) => {
+      if (prev.find((c) => c.id === card.id)) {
+        return prev;
+      }
+      return [...prev, card];
+    });
+  }
+
+  function removeCardFromChosen(card) {
+    setChose((prev) => {
+      return [...prev.filter((c) => c.id !== card.id)];
+    });
+  }
+
   let cards = [
     {
       name: "Hell of the Book",
@@ -13,7 +36,7 @@ export default function Tracklist() {
       name: "Hello",
       artist: "BBB",
       album: "WLR",
-      id: 1,
+      id: 2,
     },
   ];
 
@@ -23,28 +46,50 @@ export default function Tracklist() {
         <h2>Result</h2>
         {cards.map((card) => {
           return (
-            <ul>
-              <li className="name">{card.name}</li>
-              <li className="artist_album">
+            <li key={card.id}>
+              <span className="name">{card.name} </span>
+              <span
+                className="plus_button"
+                onClick={() => addCardToChosen(card)}
+              >
+                +
+              </span>
+
+              <br />
+
+              <span className="artist_album">
                 {card.artist} | {card.album}
-              </li>
-            </ul>
+              </span>
+            </li>
           );
         })}
       </div>
       <div className="chosen">
-        <input className="playlist_name_input" />
-        {cards.map((card) => {
+        <input
+          className="playlist_name_input"
+          onChange={inputHandler}
+          value={input}
+        />
+
+        {chose.map((card) => {
           return (
-            <ul>
-              <li className="name">{card.name}</li>
-              <li className="artist_album">
+            <li key={card.id}>
+              <span className="name">{card.name} </span>
+              <span
+                className="plus_button"
+                onClick={() => removeCardFromChosen(card)}
+              >
+                -
+              </span>
+              <br></br>
+              <span className="artist_album">
                 {card.artist} | {card.album}
-              </li>
-            </ul>
+              </span>
+            </li>
           );
         })}
-        <button className="save">SAVE TO SPOTIFY</button>
+
+        <SendButton />
       </div>
     </div>
   );
