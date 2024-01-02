@@ -1,4 +1,4 @@
-function UserToken() {
+export default function AccessToken() {
   function generateRandomString(length) {
     var text = "";
     var possible =
@@ -21,4 +21,6 @@ function UserToken() {
   url += "&scope=" + encodeURIComponent(scope);
   url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
   url += "&state=" + encodeURIComponent(state);
+
+  return url;
 }
