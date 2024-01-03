@@ -1,11 +1,10 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Tracklist from "../tracklist/Tracklist.js";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState({});
+  const [searchResults, setSearchResults] = useState({ 0: "" });
   function searchHandler(e) {
     setSearch(e.target.value);
   }
@@ -14,7 +13,7 @@ function App() {
   const REDIRECT_URI = "http://localhost:3000/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -27,11 +26,18 @@ function App() {
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
-      window.location.hash = "";
       window.localStorage.setItem("token", token);
     }
 
     setToken(token);
+
+    // Проверяем, есть ли в URL фрагмент после # и добавляем ?, если его нет
+    if (window.location.hash && !window.location.search) {
+      const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?#${hash}`;
+      window.history.replaceState(null, null, newUrl);
+    }
+
+    window.location.hash = ""; // Очистка фрагмента
   }, []);
 
   const logout = () => {
@@ -40,6 +46,7 @@ function App() {
   };
 
   // search
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function searchButtonHandler() {
     await fetch(
       `https://api.spotify.com/v1/search?q=${encodeURI(
@@ -65,7 +72,7 @@ function App() {
         playlist. Please login to your account before using.
       </h2>
       <a
-        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+        href={`${AUTH_ENDPOINT}?response_type=${RESPONSE_TYPE}&client_id=${CLIENT_ID}&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`}
       >
         Login to Spotify
       </a>
@@ -89,7 +96,7 @@ function App() {
         </button>
       </form>
 
-      <Tracklist props={searchResults} />
+      <Tracklist props={searchResults} token={token} />
       <button className="logout" onClick={logout}>
         Logout
       </button>

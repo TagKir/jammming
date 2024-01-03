@@ -5,7 +5,6 @@ import SendButton from "../send/SendButton.js";
 export default function Tracklist(props) {
   const [cards, setCards] = useState([]);
   const [chose, setChose] = useState([]);
-
   useEffect(() => {
     if (props.props.tracks) {
       setCards(props.props.tracks.items);
@@ -74,7 +73,7 @@ export default function Tracklist(props) {
             </li>
           );
         })}
-        <SendButton props={chose} />
+        <SendButton props={chose} token={props.token} />
       </div>
     </div>
   );
