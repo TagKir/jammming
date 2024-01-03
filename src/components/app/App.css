@@ -1,15 +1,25 @@
-.App {
+.unLogged {
+  height: 100vh;
+  background-color: darkslateblue;
   text-align: center;
-  background-image: url("./background.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  min-height: 100vh;
+}
+.unLogged h2 {
+  margin: 0 20px;
+  font-weight: 400;
+}
+.unLogged a {
+  font-weight: 700;
+  color: azure;
+  font-size: 24px;
 }
 
+.App {
+  text-align: center;
+  background-color: pink;
+}
 input {
   outline: none;
 }
-
 header {
   display: flex;
   background-color: indigo;
@@ -18,15 +28,19 @@ header {
   justify-content: center;
   align-items: center;
 }
-
 h1 {
   margin: 0;
   font-size: 48px;
   color: white;
 }
-
-span {
+h1 span {
   color: fuchsia;
+}
+
+.logout {
+  margin: 40px 0 0 0;
+  width: 120px;
+  height: 40px;
 }
 
 .SearchBar {

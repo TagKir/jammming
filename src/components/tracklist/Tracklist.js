@@ -1,14 +1,17 @@
 import "./Tracklist.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SendButton from "../send/SendButton.js";
 
 export default function Tracklist(props) {
-  const [input, setInput] = useState("Default");
   const [chose, setChose] = useState([]);
+  const [cards, setCards] = useState([]);
 
-  function inputHandler(e) {
-    setInput(e.target.value);
-  }
+  useEffect(() => {
+    if (props.props.tracks) {
+      setCards(props.props.tracks.items);
+      console.log(props.props.tracks.items);
+    }
+  }, [props.props.tracks]);
 
   function addCardToChosen(card) {
     setChose((prev) => {
@@ -24,21 +27,6 @@ export default function Tracklist(props) {
       return [...prev.filter((c) => c.id !== card.id)];
     });
   }
-
-  let cards = [
-    {
-      name: "Hell of the Book",
-      artist: "Hell",
-      album: "None",
-      id: 1,
-    },
-    {
-      name: "Hello",
-      artist: "BBB",
-      album: "WLR",
-      id: 2,
-    },
-  ];
 
   return (
     <div className="all">
@@ -57,38 +45,27 @@ export default function Tracklist(props) {
 
               <br />
 
-              <span className="artist_album">
-                {card.artist} | {card.album}
-              </span>
+              <span className="artist_album">| {card.album.name}</span>
             </li>
           );
         })}
       </div>
       <div className="chosen">
-        <input
-          className="playlist_name_input"
-          onChange={inputHandler}
-          value={input}
-        />
-
         {chose.map((card) => {
           return (
             <li key={card.id}>
               <span className="name">{card.name} </span>
               <span
-                className="plus_button"
+                className="minus_button"
                 onClick={() => removeCardFromChosen(card)}
               >
                 -
               </span>
               <br></br>
-              <span className="artist_album">
-                {card.artist} | {card.album}
-              </span>
+              <span className="artist_album">| {card.album.name}</span>
             </li>
           );
         })}
-
         <SendButton />
       </div>
     </div>

@@ -51,19 +51,13 @@ h2 {
   color: slategray;
 }
 
-.plus_button {
+.plus_button,
+.minus_button {
   font-size: 32px;
 }
-
-.playlist_name_input {
-  background-color: darkorchid;
-  color: white;
-  font-size: 26px;
-  width: 70%;
-  height: 30px;
-  margin-top: 50px;
-  border: 0px;
-  border-bottom: 1px solid black;
-  border-radius: 0;
-  padding-right: 20px;
+.plus_button {
+  color: red;
+}
+.minus_button {
+  color: deepskyblue;
 }
