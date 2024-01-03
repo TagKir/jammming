@@ -3,13 +3,12 @@ import React, { useState, useEffect } from "react";
 import SendButton from "../send/SendButton.js";
 
 export default function Tracklist(props) {
-  const [chose, setChose] = useState([]);
   const [cards, setCards] = useState([]);
+  const [chose, setChose] = useState([]);
 
   useEffect(() => {
     if (props.props.tracks) {
       setCards(props.props.tracks.items);
-      console.log(props.props.tracks.items);
     }
   }, [props.props.tracks]);
 
@@ -45,7 +44,14 @@ export default function Tracklist(props) {
 
               <br />
 
-              <span className="artist_album">| {card.album.name}</span>
+              <span className="artist_album">
+                {card.artists.reduce(
+                  (result, artist, index) =>
+                    `${index === 0 ? "" : result + ","} ${artist.name}`,
+                  []
+                )}{" "}
+                | {card.album.name}
+              </span>
             </li>
           );
         })}
@@ -62,11 +68,13 @@ export default function Tracklist(props) {
                 -
               </span>
               <br></br>
-              <span className="artist_album">| {card.album.name}</span>
+              <span className="artist_album">
+                {card.artists[0].name} | {card.album.name}
+              </span>
             </li>
           );
         })}
-        <SendButton />
+        <SendButton props={chose} />
       </div>
     </div>
   );
