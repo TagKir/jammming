@@ -42,6 +42,26 @@ export default function SendButton(props) {
           });
       });
   }
+  async function refreshToken() {
+    const refreshToken = localStorage.getItem("refresh_token");
+    const url = "https://accounts.spotify.com/api/token";
+
+    const payload = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        grant_type: "refresh_token",
+        refresh_token: refreshToken,
+      }),
+    };
+    const body = await fetch(url, payload).then((response) => {
+      localStorage.setItem("access_token", response.accessToken);
+      localStorage.setItem("refresh_token", response.refreshToken);
+    });
+  }
+
   useEffect(() => {
     if (props.props[0]) {
       setSaveUris(props.props.map((track) => track.uri));
@@ -55,7 +75,7 @@ export default function SendButton(props) {
         placeholder="Best playlist"
         required
       />
-      <button className="save" onClick={CreatePlaylist}>
+      <button className="save" onClick={(CreatePlaylist, refreshToken)}>
         SAVE TO SPOTIFY
       </button>
     </form>
