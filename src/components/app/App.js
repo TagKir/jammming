@@ -10,7 +10,7 @@ function App() {
   }
 
   const CLIENT_ID = "42774e0a12cd44d189d0dcbc18318dc2";
-  const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI = "https://tagkir.github.io/jammming/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState();
@@ -72,7 +72,7 @@ function App() {
         playlist. Please login to your account before using.
       </h2>
       <a
-        href={`${AUTH_ENDPOINT}?response_type=${RESPONSE_TYPE}&client_id=${CLIENT_ID}&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`}
+        href={`${AUTH_ENDPOINT}?response_type=${RESPONSE_TYPE}&client_id=${CLIENT_ID}&scope=playlist-modify-private&redirect_uri=${REDIRECT_URI}`}
       >
         Login to Spotify
       </a>
