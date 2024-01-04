@@ -72,7 +72,7 @@ function App() {
         playlist. Please login to your account before using.
       </h2>
       <a
-        href={`${AUTH_ENDPOINT}?response_type=${RESPONSE_TYPE}&client_id=${CLIENT_ID}&scope=playlist-modify-private&redirect_uri=${REDIRECT_URI}`}
+        href={`${AUTH_ENDPOINT}?response_type=${RESPONSE_TYPE}&client_id=${CLIENT_ID}&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`}
       >
         Login to Spotify
       </a>
